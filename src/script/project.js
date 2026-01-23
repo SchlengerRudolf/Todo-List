@@ -1,14 +1,15 @@
-import { Todo } from "./todo.js";
-
 export class Project {
     #title;
     #description;
+    #id;
     #todoList = [];
+    
     
     constructor(title, description) {
         this.#title = title;
         this.#description = description;
         this.#todoList = [];
+        this.#id = crypto.randomUUID();
     }
 
     get getTitle() { return this.#title };
@@ -16,6 +17,8 @@ export class Project {
 
     get getDescription() { return this.#description };
     set setDescription(text) { this.#description = text };
+
+    get getId() { return this.#id };
 
     get getTodoList() { return this.#todoList };
 
