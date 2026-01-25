@@ -1,0 +1,102 @@
+:root {
+    --main-color: #e2e8f0;
+    --button-hover-color: #d5dbe3;
+    --standard-shadow: 0 2px 3px #00000050;
+}
+
+* {
+    margin: 0;
+}
+
+textarea {
+    resize: none;
+}
+
+button:hover {
+    background-color: var(--button-hover-color);
+}
+
+.buttonShadow {
+    box-shadow: var(--standard-shadow);
+}
+
+#main-container {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+#logo {
+    max-width: 100px;
+    margin: 10px 50px 50px 50px;
+}
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sidebar h2 {
+    display: flex;
+    justify-self: center;
+    margin-bottom: 15px;
+}
+
+#project-container {
+    border: 1px solid #000000;
+    min-width: 100%;
+    min-height: 50%;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.5rem;
+}
+
+#project-container span {
+    margin: 0.2rem 2rem 0 2rem;
+    font-size: 1.2rem;
+}
+
+#project-container span:hover {
+    font-weight: bold;
+}
+
+.newProject {
+    background-color: var(--main-color);
+    border: none;
+    border-radius: 1rem;
+    padding: 0.75rem 3rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+    min-width: 210px;
+}
+
+#content-container {
+    background-color: var(--main-color);
+}
+
+#new-project-dialog {
+    justify-self: center;
+    align-self: center;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: var(--standard-shadow);
+}
+
+#new-project-dialog:open {
+    display: flex;
+    flex-direction: column;
+}
+
+#new-project-form {
+    display: grid;
+    grid-template-columns: 100px 200px;
+    row-gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+dialog::backdrop {
+    backdrop-filter: blur(2px);
+}
