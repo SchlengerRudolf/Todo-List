@@ -7,13 +7,25 @@
 </head>
 <body>
     <div id="main-container">
+        <dialog closedby="any" id="new-project-dialog">
+            <form id="new-project-form">
+                <label for="projectTitle">Title:</label>
+                <input type="text" name="Title name" id="projectTitle" required>
+                <label for="projectDescription">Description:</label>
+                <textarea rows="5" name="Project description" id="projectDescription"></textarea>
+            </form>
+            <div id="projectDialogButtons">
+                <button class="addButton">Add Project</button>
+                <button class="closeButton" autofocus>Close</button>
+            </div>
+        </dialog>
         <div id="sidebar">
-            <img src="./images/logo.jpeg" alt="Todo logo, with black background, written out with white color">
+            <img id="logo" src="./images/logo.jpeg" alt="Todo logo, with black background, written out with white color">
             <h2>Projects</h2>
             <div id="project-container">
                 
             </div>
-            <button class="newProject">+ new Project</button>
+            <button class="newProject buttonShadow">+ &emsp;New Project</button>
         </div>
         <div id="content-container">
             

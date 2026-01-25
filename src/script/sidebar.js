@@ -3,7 +3,8 @@ import { projectList } from "./projectList.js"
 export const sidebar = (function () {
     const projectsContainer = document.getElementById("project-container");
 
-    const display = () => {
+    // Displays all projects at the dedicated area in the sidebar 
+    const displayProjectList = () => {
         const projects = projectList.getProjectList();
 
         for (const project of projects) {
@@ -14,5 +15,12 @@ export const sidebar = (function () {
         }
     };
 
-    return { display };
+    // Sidebar button for opening the new project dialog
+    const openNewProjectDialog = () => {
+        const newProjectDialog = document.getElementById("new-project-dialog");
+
+        newProjectDialog.showModal();
+    }
+
+    return { displayProjectList, openNewProjectDialog };
 })();
