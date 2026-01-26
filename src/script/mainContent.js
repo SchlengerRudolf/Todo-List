@@ -5,27 +5,17 @@ export const mainContent = (function () {
 
     const displayProject = (project) => {
         const todoList = project.getTodoList;
+        const projectTitle = document.getElementById("currentProjectTitle");
+        const newTodoButton = document.querySelector("#content-container .newTodo");
 
-        const projectTitle = document.createElement("h1");
         projectTitle.textContent = project.getTitle;
-        const completed = document.createElement("h2");
-        completed.textContent = "Completed";
-        const newTodoButton = document.createElement("button");
-        newTodoButton.classList.add("newTodo");
-        newTodoButton.classList.add("buttonShadow");
-        newTodoButton.textContent = "+   New Todo";
-
-        contentContainer.appendChild(projectTitle);
         displayUncomplete(todoList);
-        contentContainer.appendChild(newTodoButton);
-        contentContainer.appendChild(completed);
         displayComplete(todoList);
     }
 
     const displayUncomplete = (todoList) => {
-        const list = document.createElement("ul");
-        list.classList.add("uncomplete");
-        const contentContainer = document.getElementById("content-container");
+        const list = document.getElementById("uncompleteTodos");
+        list.textContent = "";
 
         for (const todo of todoList) {
             if (todo.getCompletionStatus === false) {
@@ -35,14 +25,11 @@ export const mainContent = (function () {
                 list.appendChild(todoContainer);
             }
         }
-
-        contentContainer.appendChild(list);
     }
 
     const displayComplete = (todoList) => {
-        const list = document.createElement("ul");
-        list.classList.add("complete");
-        const contentContainer = document.getElementById("content-container");
+        const list = document.getElementById("completedTodos");
+        list.textContent = "";
 
         for (const todo of todoList) {
             if (todo.getCompletionStatus === true) {
@@ -52,8 +39,6 @@ export const mainContent = (function () {
                 list.appendChild(todoContainer);
             }
         }
-
-        contentContainer.appendChild(list);
     }
 
     return { displayProject };
