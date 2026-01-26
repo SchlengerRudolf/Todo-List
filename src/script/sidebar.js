@@ -8,7 +8,7 @@ export const sidebar = (function () {
         const projects = projectList.getProjectList();
 
         for (const project of projects) {
-           const projectContainer = document.createElement("span");
+           const projectContainer = document.createElement("li");
            projectContainer.id = project.getId;
            projectContainer.textContent = project.getTitle;
            projectsContainer.appendChild(projectContainer);
