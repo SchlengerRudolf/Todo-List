@@ -1,12 +1,12 @@
 import { Todo } from "./todo.js";
 
 export const mainContent = (function () {
-    const contentContainer = document.getElementById("content-container");
+    let currentProject = {};
 
     const displayProject = (project) => {
+        currentProject = project;
         const todoList = project.getTodoList;
         const projectTitle = document.getElementById("currentProjectTitle");
-        const newTodoButton = document.querySelector("#content-container .newTodo");
 
         projectTitle.textContent = project.getTitle;
         displayUncomplete(todoList);
@@ -41,5 +41,13 @@ export const mainContent = (function () {
         }
     }
 
-    return { displayProject };
+    const openNewTodoDialog = () => {
+        const newTodoDialog = document.getElementById("new-todo-dialog");
+
+        newTodoDialog.showModal();
+    }
+
+    const getCurrentProject = () => { return currentProject };
+
+    return { displayProject, openNewTodoDialog, getCurrentProject };
 })();

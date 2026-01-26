@@ -18,6 +18,22 @@
                 <button class="closeButton" autofocus>Close</button>
             </div>
         </dialog>
+        <dialog closedby="any" id="new-todo-dialog">
+            <form id="new-todo-form">
+                <label for="todoTitle">Title:</label>
+                <input type="text" name="Title name" id="todoTitle" required>
+                <label for="todoDueDate">Due date:</label>
+                <input type="date" name="Due date" id="todoDueDate">
+                <label for="todoPriority">Priority:</label>
+                <input type="number" name="Priority" id="todoPriority" min="0" max="3" value="0" required>
+                <label for="todoDescription">Description:</label>
+                <textarea rows="5" name="Todo description" id="todoDescription"></textarea>
+            </form>
+            <div id="todoDialogButtons">
+                <button class="addButton">Add Todo</button>
+                <button class="closeButton" autofocus>Close</button>
+            </div>
+        </dialog>
     <div id="main-container">
         <div id="sidebar">
             <img id="logo" src="./images/logo.jpeg" alt="Todo logo, with black background, written out with white color">
@@ -28,7 +44,7 @@
         <div id="content-container">
             <h1 id="currentProjectTitle"></h1>
             <ul id="uncompleteTodos"></ul>
-            <button class="addButton buttonShadow">+   New Todo</button>
+            <button class="newTodo buttonShadow">+   New Todo</button>
             <h2>Completed</h2>
             <ul id="completedTodos"></ul>
         </div>

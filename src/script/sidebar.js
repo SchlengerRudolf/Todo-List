@@ -5,6 +5,7 @@ export const sidebar = (function () {
 
     // Displays all projects at the dedicated area in the sidebar 
     const displayProjectList = () => {
+        projectsContainer.textContent = "";
         const projects = projectList.getProjectList();
 
         for (const project of projects) {
