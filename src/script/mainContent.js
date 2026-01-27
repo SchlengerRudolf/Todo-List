@@ -17,9 +17,7 @@ export const mainContent = (function () {
 
         for (const todo of todoList) {
             if (todo.getCompletionStatus === false) {
-                const todoContainer = document.createElement("li");
-                todoContainer.id = todo.getId;
-                todoContainer.textContent = todo.getTitle; 
+                const todoContainer = createTodoContainer(todo);
                 list.appendChild(todoContainer);
             }
         }
@@ -31,12 +29,46 @@ export const mainContent = (function () {
 
         for (const todo of todoList) {
             if (todo.getCompletionStatus === true) {
-                const todoContainer = document.createElement("li");
-                todoContainer.id = todo.getId;
-                todoContainer.textContent = todo.getTitle; 
+                const todoContainer = createTodoContainer(todo);
                 list.appendChild(todoContainer);
             }
         }
+    }
+
+    const createTodoContainer = (todo) => {
+        const container = document.createElement("span");
+        const toggleButton = document.createElement("button");
+        toggleButton.classList.add("toggleButton");
+        const todoListItem = document.createElement("li");
+
+        if (!todo.getCompletionStatus) {
+            toggleButton.textContent = " ";
+
+            toggleButton.addEventListener("click", function () {
+                todo.toggleCompletionStatus();
+                displayProject(currentProject);
+            });
+            toggleButton.addEventListener("mouseover", function () { toggleButton.textContent = "✓"});
+            toggleButton.addEventListener("mouseout", function () { toggleButton.textContent = " "});
+        }
+
+        else {
+            toggleButton.textContent = "✓"
+
+            toggleButton.addEventListener("click", function () {
+                todo.toggleCompletionStatus();
+                displayProject(currentProject);
+            });
+            toggleButton.addEventListener("mouseover", function () { toggleButton.textContent = "X"});
+            toggleButton.addEventListener("mouseout", function () { toggleButton.textContent = "✓"});
+        }
+
+        todoListItem.id = todo.getId;
+        todoListItem.textContent = todo.getTitle;
+        container.appendChild(toggleButton);
+        container.appendChild(todoListItem);
+        
+        return container;
     }
 
     const openNewTodoDialog = () => {

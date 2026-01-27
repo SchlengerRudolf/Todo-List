@@ -1,4 +1,4 @@
-import { projectList } from "./projectList.js"
+import { projectList } from "./projectList.js";
 import { mainContent } from "./mainContent.js";
 
 export const sidebar = (function () {
@@ -15,7 +15,7 @@ export const sidebar = (function () {
            projectContainer.textContent = project.getTitle;
            projectContainer.addEventListener("click", function () {
                 mainContent.displayProject(project);
-           })
+           });
            projectsContainer.appendChild(projectContainer);
         }
     };
