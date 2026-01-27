@@ -1,4 +1,5 @@
 import { projectList } from "./projectList.js"
+import { mainContent } from "./mainContent.js";
 
 export const sidebar = (function () {
     const projectsContainer = document.getElementById("project-container");
@@ -12,6 +13,9 @@ export const sidebar = (function () {
            const projectContainer = document.createElement("li");
            projectContainer.id = project.getId;
            projectContainer.textContent = project.getTitle;
+           projectContainer.addEventListener("click", function () {
+                mainContent.displayProject(project);
+           })
            projectsContainer.appendChild(projectContainer);
         }
     };

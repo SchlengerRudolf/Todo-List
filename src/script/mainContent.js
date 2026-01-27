@@ -1,5 +1,3 @@
-import { Todo } from "./todo.js";
-
 export const mainContent = (function () {
     let currentProject = {};
 
