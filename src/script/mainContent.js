@@ -1,3 +1,5 @@
+import crossImage from "../images/cross-solid.svg";
+
 export const mainContent = (function () {
     let currentProject = {};
 
@@ -10,6 +12,8 @@ export const mainContent = (function () {
         displayUncomplete(todoList);
         displayComplete(todoList);
     }
+
+    // --- Helper functions ---
 
     const displayUncomplete = (todoList) => {
         const list = document.getElementById("uncompleteTodos");
@@ -38,38 +42,60 @@ export const mainContent = (function () {
     const createTodoContainer = (todo) => {
         const container = document.createElement("span");
         const toggleButton = document.createElement("button");
-        toggleButton.classList.add("toggleButton");
+        const removeButton = document.createElement("img");
         const todoListItem = document.createElement("li");
 
-        if (!todo.getCompletionStatus) {
-            toggleButton.textContent = " ";
+        removeButton.src = crossImage;
+        toggleButton.classList.add("toggleButton");
+        removeButton.classList.add("removeButton");
 
-            toggleButton.addEventListener("click", function () {
-                todo.toggleCompletionStatus();
-                displayProject(currentProject);
-            });
-            toggleButton.addEventListener("mouseover", function () { toggleButton.textContent = "✓"});
-            toggleButton.addEventListener("mouseout", function () { toggleButton.textContent = " "});
-        }
-
-        else {
-            toggleButton.textContent = "✓"
-
-            toggleButton.addEventListener("click", function () {
-                todo.toggleCompletionStatus();
-                displayProject(currentProject);
-            });
-            toggleButton.addEventListener("mouseover", function () { toggleButton.textContent = "X"});
-            toggleButton.addEventListener("mouseout", function () { toggleButton.textContent = "✓"});
-        }
+        addToggleEvent(toggleButton, todo);
+        addRemoveEvent(removeButton, todo);
 
         todoListItem.id = todo.getId;
         todoListItem.textContent = todo.getTitle;
         container.appendChild(toggleButton);
         container.appendChild(todoListItem);
+        container.appendChild(removeButton);
         
         return container;
     }
+
+    // --- EventListener functions ---
+
+    const addToggleEvent = (button, todo) => {
+        // Different button textContent on hover, depending on completionStatus
+        if (!todo.getCompletionStatus) {
+            button.textContent = " ";
+
+            button.addEventListener("click", function () {
+                todo.toggleCompletionStatus();
+                displayProject(currentProject);
+            });
+            button.addEventListener("mouseover", function () { button.textContent = "✓"});
+            button.addEventListener("mouseout", function () { button.textContent = " "});
+        }
+
+        else {
+            button.textContent = "✓"
+                    
+            button.addEventListener("click", function () {
+                todo.toggleCompletionStatus();
+                displayProject(currentProject);
+            });
+            button.addEventListener("mouseover", function () { button.textContent = "X"});
+            button.addEventListener("mouseout", function () { button.textContent = "✓"});
+        };
+    }
+
+    const addRemoveEvent = (button, todo) => {
+        button.addEventListener("click", function () {
+            currentProject.removeTodo(todo.getId);
+            displayProject(currentProject);
+        });
+    };
+
+    // --- Open dialog function ---
 
     const openNewTodoDialog = () => {
         const newTodoDialog = document.getElementById("new-todo-dialog");

@@ -2,6 +2,8 @@
     --main-color: #e2e8f0;
     --button-hover-color: #d5dbe3;
     --standard-shadow: 0 2px 3px #00000050;
+    --toggle-button-sidelength: 1rem;
+    --remove-button-sidelength: 1.5rem;
 }
 
 * {
@@ -12,7 +14,7 @@ ul {
     list-style: none;
 }
 
-li, button {
+li, button, #content-container img {
     cursor: pointer;
     white-space: pre-wrap;
 }
@@ -88,6 +90,14 @@ dialog::backdrop {
 
 #content-container {
     background-color: var(--main-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.newTodo {
+    width: 100px;
 }
 
 #new-project-dialog {
@@ -110,10 +120,26 @@ dialog::backdrop {
     margin-bottom: 1rem;
 }
 
-.toggleButton {
-    height: 1rem;
-    width: 1rem;
-    border: 1px solid #000000;
+#content-container span {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.toggleButton, .removeButton {
     border-radius: 100px;
     padding: 0;
+}
+
+.toggleButton {
+    height: var(--toggle-button-sidelength);
+    width: var(--toggle-button-sidelength);
+    border: 1px solid #000000;
+}
+
+.removeButton {
+    height: var(--remove-button-sidelength);
+    width: var(--remove-button-sidelength);
 }
