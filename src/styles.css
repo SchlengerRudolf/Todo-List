@@ -1,6 +1,12 @@
 :root {
     --main-color: #e2e8f0;
     --button-hover-color: #d5dbe3;
+    --border-priority-one: #ffff00;
+    --border-priority-two: #ffa500;
+    --border-priority-three: #ff0000;
+    --background-priority-one: #ededcf;
+    --background-priority-two: #f4e6ce;
+    --background-priority-three: #efd8d8;
     --standard-shadow: 0 2px 3px #00000050;
     --toggle-button-sidelength: 1rem;
     --remove-button-sidelength: 1.5rem;
@@ -23,7 +29,7 @@ textarea {
     resize: none;
 }
 
-button:hover {
+.newProject:hover {
     background-color: var(--button-hover-color);
 }
 
@@ -120,12 +126,19 @@ dialog::backdrop {
     margin-bottom: 1rem;
 }
 
-#content-container span {
+#content-container span, #content-container p {
     width: 200px;
     display: flex;
+}
+
+#content-container span {
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+}
+
+#content-container p {
+    justify-content: center;
 }
 
 .toggleButton, .removeButton {
@@ -136,10 +149,26 @@ dialog::backdrop {
 .toggleButton {
     height: var(--toggle-button-sidelength);
     width: var(--toggle-button-sidelength);
-    border: 1px solid #000000;
+    border-width: 1px;
+    border-style: solid;
 }
 
 .removeButton {
     height: var(--remove-button-sidelength);
     width: var(--remove-button-sidelength);
+}
+
+.prioOne {
+    border-color: var(--border-priority-one);
+    background-color: var(--background-priority-one);
+}
+
+.prioTwo {
+    border-color: var(--border-priority-two);
+    background-color: var(--background-priority-two);
+}
+
+.prioThree {
+    border-color: var(--border-priority-three);
+    background-color: var(--background-priority-three);
 }

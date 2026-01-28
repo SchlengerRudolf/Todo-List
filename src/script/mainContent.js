@@ -56,6 +56,7 @@ export const mainContent = (function () {
         removeButton.classList.add("removeButton");
 
         addToggleEvent(toggleButton, todo);
+        priorityColoring(toggleButton, todo.getPriority);
         addRemoveEvent(removeButton, todo);
 
         todoListItem.id = todo.getId;
@@ -65,6 +66,25 @@ export const mainContent = (function () {
         container.appendChild(removeButton);
         
         return container;
+    }
+
+    const priorityColoring = (button, priority) => {
+        switch (priority) {
+            case "0":
+                button.classList.add("prioZero");
+                break;
+            case "1":
+                button.classList.add("prioOne");
+                break;
+            case "2":
+                button.classList.add("prioTwo");
+                break;
+            case "3":
+                button.classList.add("prioThree");
+                break;
+            default:
+                button.classList.add("prioZero");
+        }
     }
 
     // --- EventListener functions ---
