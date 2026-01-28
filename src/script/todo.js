@@ -6,7 +6,7 @@ export class Todo {
     #completionStatus;
     #id;
 
-    constructor(title, description, dueDate, priority) {
+    constructor(title, dueDate, priority, description) {
         this.#title = title;
         this.#description = description;
         this.#dueDate = dueDate;
