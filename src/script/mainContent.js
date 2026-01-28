@@ -22,7 +22,10 @@ export const mainContent = (function () {
         for (const todo of todoList) {
             if (todo.getCompletionStatus === false) {
                 const todoContainer = createTodoContainer(todo);
+                const todoDueDate = document.createElement("p");
+                todoDueDate.textContent = todo.getDueDate;
                 list.appendChild(todoContainer);
+                list.appendChild(todoDueDate);
             }
         }
     }
@@ -34,7 +37,10 @@ export const mainContent = (function () {
         for (const todo of todoList) {
             if (todo.getCompletionStatus === true) {
                 const todoContainer = createTodoContainer(todo);
+                const todoDueDate = document.createElement("p");
+                todoDueDate.textContent = todo.getDueDate;
                 list.appendChild(todoContainer);
+                list.appendChild(todoDueDate);
             }
         }
     }
@@ -93,7 +99,7 @@ export const mainContent = (function () {
             currentProject.removeTodo(todo.getId);
             displayProject(currentProject);
         });
-    };
+    }
 
     // --- Open dialog function ---
 
