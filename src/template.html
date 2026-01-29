@@ -34,6 +34,18 @@
                 <button class="closeButton" autofocus>Close</button>
             </div>
         </dialog>
+        <dialog closedby="any" id="view-project-dialog">
+            <form id="view-project-dialog">
+                <label for="viewProjectTitle">Title:</label>
+                <input class="locked" type="text" name="Title name" id="viewProjectTitle" disabled>
+                <label for="viewProjectDescription">Description:</label>
+                <textarea rows="5" name="Project description" id="viewProjectDescription"></textarea>
+            </form>
+            <div id="viewProjectDialogButtons">
+                <button class="changeButton">Change</button>
+                <button class="closeButton" autofocus>Close</button>
+            </div>
+        </dialog>
     <div id="main-container">
         <div id="sidebar">
             <img id="logo" src="./images/logo.jpeg" alt="Todo logo, with black background, written out with white color">

@@ -20,7 +20,7 @@ ul {
     list-style: none;
 }
 
-li, button, #content-container img {
+li, button, #content-container img, #currentProjectTitle{
     cursor: pointer;
     white-space: pre-wrap;
 }

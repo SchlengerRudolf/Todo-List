@@ -14,14 +14,23 @@ const todoDueDate = document.getElementById("todoDueDate");
 const todoPriority = document.getElementById("todoPriority");
 const todoDescription = document.getElementById("todoDescription");
 
+const viewProjectDialog = document.getElementById("view-project-dialog");
+let viewProjectTitle = document.getElementById("viewProjectTitle");
+let viewProjectDescription = document.getElementById("viewProjectDescription");
+
 // --- Buttons ---
 
 const newProjectButton = document.querySelector(".newProject");
 const addProjectButton = document.querySelector("#projectDialogButtons .addButton");
 const closeProjectDialogButton = document.querySelector("#projectDialogButtons .closeButton");
+
 const newTodoButton = document.querySelector(".newTodo");
 const addTodoButton = document.querySelector("#todoDialogButtons .addButton");
 const closeTodoDialogButton = document.querySelector("#todoDialogButtons .closeButton");
+
+const viewProjectButton = document.getElementById("currentProjectTitle");
+const changeProjectButton = document.querySelector("#viewProjectDialogButtons .changeButton");
+const closeViewProjectDialogButton = document.querySelector("#viewProjectDialogButtons .closeButton");
 
 // --- Event handlers for project creation dialog ---
 
@@ -70,4 +79,26 @@ newTodoDialog.addEventListener("close", function () {
     todoDueDate.value = "";
     todoPriority.value = 0;
     todoDescription.value = "";
+})
+
+// --- Event handlers for view project dialog ---
+
+viewProjectButton.addEventListener("click", function () {
+    viewProjectTitle.value = mainContent.getCurrentProject().getTitle;
+    viewProjectDescription.value = mainContent.getCurrentProject().getDescription;
+
+    mainContent.openViewProjectDialog();
+})
+
+changeProjectButton.addEventListener("click", function () {
+    mainContent.getCurrentProject().setTitle = viewProjectTitle.value;
+    mainContent.getCurrentProject().setDescription = viewProjectDescription.value;
+
+    sidebar.displayProjectList();
+    mainContent.displayProject(mainContent.getCurrentProject());
+    viewProjectDialog.close();
+})
+
+closeViewProjectDialogButton.addEventListener("click", function () {
+    viewProjectDialog.close();
 })

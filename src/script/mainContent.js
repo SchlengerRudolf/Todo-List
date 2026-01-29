@@ -129,7 +129,13 @@ export const mainContent = (function () {
         newTodoDialog.showModal();
     }
 
+    const openViewProjectDialog = () => {
+        const viewProjectDialog = document.getElementById("view-project-dialog");
+
+        viewProjectDialog.showModal();
+    }
+
     const getCurrentProject = () => { return currentProject };
 
-    return { displayProject, openNewTodoDialog, getCurrentProject };
+    return { displayProject, openNewTodoDialog, getCurrentProject, openViewProjectDialog };
 })();
