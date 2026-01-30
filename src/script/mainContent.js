@@ -55,6 +55,7 @@ export const mainContent = (function () {
         toggleButton.classList.add("toggleButton");
         removeButton.classList.add("removeButton");
 
+        addViewTodoEvent(todoListItem, todo);
         addToggleEvent(toggleButton, todo);
         priorityColoring(toggleButton, todo.getPriority);
         addRemoveEvent(removeButton, todo);
@@ -118,6 +119,19 @@ export const mainContent = (function () {
         button.addEventListener("click", function () {
             currentProject.removeTodo(todo.getId);
             displayProject(currentProject);
+        });
+    }
+
+    const addViewTodoEvent = (button, todo) => {
+        button.addEventListener("click", function () {
+            const viewTodoDialog = document.getElementById("view-todo-dialog");
+            document.getElementById("viewTodoId").value = todo.getId;
+            document.getElementById("viewTodoTitle").value = todo.getTitle;
+            document.getElementById("viewTodoDueDate").value = todo.getDueDate;
+            document.getElementById("viewTodoPriority").value = todo.getPriority;
+            document.getElementById("viewTodoDescription").value = todo.getDescription;
+
+            viewTodoDialog.showModal();
         });
     }
 

@@ -18,6 +18,12 @@ const viewProjectDialog = document.getElementById("view-project-dialog");
 let viewProjectTitle = document.getElementById("viewProjectTitle");
 let viewProjectDescription = document.getElementById("viewProjectDescription");
 
+const viewTodoDialog = document.getElementById("view-todo-dialog");
+let viewTodoTitle = document.getElementById("viewTodoTitle");
+let viewTodoDueDate = document.getElementById("viewTodoDueDate");
+let viewTodoPriority = document.getElementById("viewTodoPriority");
+let viewTodoDescription = document.getElementById("viewTodoDescription");
+
 // --- Buttons ---
 
 const newProjectButton = document.querySelector(".newProject");
@@ -32,7 +38,10 @@ const viewProjectButton = document.getElementById("currentProjectTitle");
 const changeProjectButton = document.querySelector("#viewProjectDialogButtons .changeButton");
 const closeViewProjectDialogButton = document.querySelector("#viewProjectDialogButtons .closeButton");
 
-// --- Event handlers for project creation dialog ---
+const changeTodoButton = document.querySelector("#viewTodoDialogButtons .changeButton");
+const closeViewTodoDialogButton = document.querySelector("#viewTodoDialogButtons .closeButton");
+
+// --- Event handlers for project creation dialog ---f
 
 newProjectButton.addEventListener("click", function () { sidebar.openNewProjectDialog() });
 
@@ -91,7 +100,6 @@ viewProjectButton.addEventListener("click", function () {
 })
 
 changeProjectButton.addEventListener("click", function () {
-    mainContent.getCurrentProject().setTitle = viewProjectTitle.value;
     mainContent.getCurrentProject().setDescription = viewProjectDescription.value;
 
     sidebar.displayProjectList();
@@ -101,4 +109,21 @@ changeProjectButton.addEventListener("click", function () {
 
 closeViewProjectDialogButton.addEventListener("click", function () {
     viewProjectDialog.close();
+})
+
+// --- Event handlers for view Todo dialog ---
+
+changeTodoButton.addEventListener("click", function () {
+    const todo = mainContent.getCurrentProject().getTodo(document.getElementById("viewTodoId").value)
+
+    todo.setDueDate = viewTodoDueDate.value;
+    todo.setPriority = viewTodoPriority.value;
+    todo.setDescription = viewTodoDescription.value;
+
+    mainContent.displayProject(mainContent.getCurrentProject());
+    viewTodoDialog.close();
+})
+
+closeViewTodoDialogButton.addEventListener("click", function () {
+    viewTodoDialog.close();
 })

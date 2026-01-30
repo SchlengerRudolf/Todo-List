@@ -18,7 +18,7 @@
                 <button class="closeButton" autofocus>Close</button>
             </div>
         </dialog>
-        <dialog closedby="any" id="new-todo-dialog">
+    <dialog closedby="any" id="new-todo-dialog">
             <form id="new-todo-form">
                 <label for="todoTitle">Title:</label>
                 <input type="text" name="Title name" id="todoTitle" required>
@@ -34,7 +34,7 @@
                 <button class="closeButton" autofocus>Close</button>
             </div>
         </dialog>
-        <dialog closedby="any" id="view-project-dialog">
+    <dialog closedby="any" id="view-project-dialog">
             <form id="view-project-dialog">
                 <label for="viewProjectTitle">Title:</label>
                 <input class="locked" type="text" name="Title name" id="viewProjectTitle" disabled>
@@ -46,6 +46,23 @@
                 <button class="closeButton" autofocus>Close</button>
             </div>
         </dialog>
+    <dialog closedby="any" id="view-todo-dialog">
+        <form id="view-todo-form">
+            <input type="text" name="Todo id" id="viewTodoId" value="" disabled hidden>
+            <label for="viewTodoTitle">Title:</label>
+            <input class="locked" type="text" name="Title name" id="viewTodoTitle" disabled>
+            <label for="viewTodoDueDate">Due date:</label>
+            <input type="date" name="Todo due date" id="viewTodoDueDate">
+            <label for="viewTodoPriority">Priority:</label>
+            <input type="number" name="Todo priority" id="viewTodoPriority" min="0" max="3" value="0">
+            <label for="viewTodoDescription">Description:</label>
+            <textarea rows="5" name="Todo description" id="viewTodoDescription"></textarea>
+        </form>
+        <div id="viewTodoDialogButtons">
+            <button class="changeButton">Change</button>
+            <button class="closeButton" autofocus>Close</button>
+        </div>
+    </dialog>
     <div id="main-container">
         <div id="sidebar">
             <img id="logo" src="./images/logo.jpeg" alt="Todo logo, with black background, written out with white color">

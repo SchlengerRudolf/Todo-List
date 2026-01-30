@@ -33,4 +33,10 @@ export class Project {
             }
         }
     };
+    
+    getTodo(id) { 
+        for (const todo of this.#todoList) {
+            if (todo.getId === id) return todo;
+        };
+    };
 }
