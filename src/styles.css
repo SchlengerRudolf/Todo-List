@@ -20,7 +20,7 @@ ul {
     list-style: none;
 }
 
-li, button, #content-container img, #currentProjectTitle{
+li, button, img, #currentProjectTitle{
     cursor: pointer;
     white-space: pre-wrap;
 }
@@ -39,6 +39,15 @@ textarea {
 
 dialog::backdrop {
     backdrop-filter: blur(2px);
+}
+
+#viewProjectDialogButtons {
+    display: flex;
+}
+
+#viewProjectDialogButtons img {
+    width: 1rem;
+    align-self: center;
 }
 
 #main-container {

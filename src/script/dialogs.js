@@ -19,7 +19,6 @@ let viewProjectTitle = document.getElementById("viewProjectTitle");
 let viewProjectDescription = document.getElementById("viewProjectDescription");
 
 const viewTodoDialog = document.getElementById("view-todo-dialog");
-let viewTodoTitle = document.getElementById("viewTodoTitle");
 let viewTodoDueDate = document.getElementById("viewTodoDueDate");
 let viewTodoPriority = document.getElementById("viewTodoPriority");
 let viewTodoDescription = document.getElementById("viewTodoDescription");
@@ -37,6 +36,7 @@ const closeTodoDialogButton = document.querySelector("#todoDialogButtons .closeB
 const viewProjectButton = document.getElementById("currentProjectTitle");
 const changeProjectButton = document.querySelector("#viewProjectDialogButtons .changeButton");
 const closeViewProjectDialogButton = document.querySelector("#viewProjectDialogButtons .closeButton");
+const deleteProjectButton = document.getElementById("deleteProjectButton");
 
 const changeTodoButton = document.querySelector("#viewTodoDialogButtons .changeButton");
 const closeViewTodoDialogButton = document.querySelector("#viewTodoDialogButtons .closeButton");
@@ -109,6 +109,18 @@ changeProjectButton.addEventListener("click", function () {
 
 closeViewProjectDialogButton.addEventListener("click", function () {
     viewProjectDialog.close();
+})
+
+deleteProjectButton.addEventListener("click", function () {
+    if (projectList.getProjectList().length > 1) {
+        projectList.removeProject(mainContent.getCurrentProject().getId);
+        sidebar.displayProjectList();
+        mainContent.displayProject(projectList.getProjectList()[0]);
+        viewProjectDialog.close();
+    }
+    else {
+        alert("Can't delete project. You need atleast one project at all times.")
+    }
 })
 
 // --- Event handlers for view Todo dialog ---
