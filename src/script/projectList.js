@@ -1,7 +1,8 @@
 export const projectList = (function () {
-    const projectList = [];
+    let projectList = [];
 
     const getProjectList = () => projectList;
+    const setProjectList = (list) => { projectList = list };
     const pushProject = (project) => projectList.push(project);
     const removeProject = (id) => {
         let list = projectList;
@@ -14,5 +15,5 @@ export const projectList = (function () {
         }
     }
 
-    return { getProjectList, pushProject, removeProject };
+    return { getProjectList, setProjectList, pushProject, removeProject };
 })();

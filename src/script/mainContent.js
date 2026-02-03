@@ -1,4 +1,5 @@
 import crossImage from "../images/cross-solid.svg";
+import { storage } from "./storage";
 
 export const mainContent = (function () {
     let currentProject = {};
@@ -98,6 +99,7 @@ export const mainContent = (function () {
             button.addEventListener("click", function () {
                 todo.toggleCompletionStatus();
                 displayProject(currentProject);
+                storage.writeUserData();
             });
             button.addEventListener("mouseover", function () { button.textContent = "✓"});
             button.addEventListener("mouseout", function () { button.textContent = " "});
@@ -109,6 +111,7 @@ export const mainContent = (function () {
             button.addEventListener("click", function () {
                 todo.toggleCompletionStatus();
                 displayProject(currentProject);
+                storage.writeUserData();
             });
             button.addEventListener("mouseover", function () { button.textContent = "X"});
             button.addEventListener("mouseout", function () { button.textContent = "✓"});
@@ -119,6 +122,7 @@ export const mainContent = (function () {
         button.addEventListener("click", function () {
             currentProject.removeTodo(todo.getId);
             displayProject(currentProject);
+            storage.writeUserData();
         });
     }
 

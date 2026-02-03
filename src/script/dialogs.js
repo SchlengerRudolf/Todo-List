@@ -1,8 +1,8 @@
 import { Project } from "./project.js";
-import { projectList } from "./projectList.js";
 import { Todo } from "./todo.js";
 import { sidebar } from "./sidebar.js";
 import { mainContent } from "./mainContent.js";
+import { storage, projectList } from "./storage.js";
 
 const newProjectDialog = document.getElementById("new-project-dialog");
 const projectTitle = document.getElementById("projectTitle");
@@ -51,6 +51,7 @@ addProjectButton.addEventListener("click", function () {
 
         projectList.pushProject(project);
         sidebar.displayProjectList();
+        storage.writeUserData();
         newProjectDialog.close("");
     }
 })
@@ -75,6 +76,7 @@ addTodoButton.addEventListener("click", function () {
 
         project.pushTodo(todo);
         mainContent.displayProject(project);
+        storage.writeUserData();
         newTodoDialog.close("");
     }
 })
@@ -104,6 +106,7 @@ changeProjectButton.addEventListener("click", function () {
 
     sidebar.displayProjectList();
     mainContent.displayProject(mainContent.getCurrentProject());
+    storage.writeUserData();
     viewProjectDialog.close();
 })
 
@@ -116,6 +119,7 @@ deleteProjectButton.addEventListener("click", function () {
         projectList.removeProject(mainContent.getCurrentProject().getId);
         sidebar.displayProjectList();
         mainContent.displayProject(projectList.getProjectList()[0]);
+        storage.writeUserData();
         viewProjectDialog.close();
     }
     else {
@@ -133,6 +137,7 @@ changeTodoButton.addEventListener("click", function () {
     todo.setDescription = viewTodoDescription.value;
 
     mainContent.displayProject(mainContent.getCurrentProject());
+    storage.writeUserData();
     viewTodoDialog.close();
 })
 
