@@ -1,53 +1,45 @@
 :root {
-    --main-color: #e2e8f0;
-    --button-hover-color: #d5dbe3;
+    --main-color: #ffffff;
+    --side-bar-color: #f6f7f9;
+    --button-hover-color: #dad2ac;
     --border-priority-one: #ffff00;
     --border-priority-two: #ffa500;
     --border-priority-three: #ff0000;
     --background-priority-one: #ededcf;
     --background-priority-two: #f4e6ce;
     --background-priority-three: #efd8d8;
-    --standard-shadow: 0 2px 3px #00000050;
+    --thumb-color: #363636;
+    --track-background-color: #e7e7e7;
+    --track-border-color: #cacaca;
+    --standard-shadow: 0 2px 6px #00000050;
+    --basic-border: 1px solid #000000;
     --toggle-button-sidelength: 1rem;
     --remove-button-sidelength: 1.5rem;
 }
 
 * {
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
+}
+
+li,
+button,
+img,
+#currentProjectTitle {
+    cursor: pointer;
+    white-space: pre-wrap;
 }
 
 ul {
     list-style: none;
 }
 
-li, button, img, #currentProjectTitle{
-    cursor: pointer;
-    white-space: pre-wrap;
-}
-
 textarea {
     resize: none;
 }
 
-.newProject:hover {
-    background-color: var(--button-hover-color);
-}
-
 .buttonShadow {
     box-shadow: var(--standard-shadow);
-}
-
-dialog::backdrop {
-    backdrop-filter: blur(2px);
-}
-
-#viewProjectDialogButtons {
-    display: flex;
-}
-
-#viewProjectDialogButtons img {
-    width: 1rem;
-    align-self: center;
 }
 
 #main-container {
@@ -57,15 +49,13 @@ dialog::backdrop {
     grid-template-columns: 1fr 4fr;
 }
 
-#logo {
-    max-width: 100px;
-    margin: 10px 50px 50px 50px;
-}
+/* --- Sidebar style --- */
 
 #sidebar {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: var(--side-bar-color);
 }
 
 #sidebar h2 {
@@ -74,14 +64,20 @@ dialog::backdrop {
     margin-bottom: 15px;
 }
 
+#logo {
+    max-width: 100px;
+    margin: 10px 50px 50px 50px;
+}
+
 #project-container {
-    border: 1px solid #000000;
+    border: var(--basic-border);
     min-width: 100%;
     min-height: 50%;
     margin-bottom: 15px;
     display: flex;
     flex-direction: column;
     padding-top: 0.5rem;
+    overflow-y: visible;
 }
 
 #project-container li {
@@ -93,6 +89,7 @@ dialog::backdrop {
     font-weight: bold;
 }
 
+/* Button */
 .newProject {
     background-color: var(--main-color);
     border: none;
@@ -103,56 +100,104 @@ dialog::backdrop {
     min-width: 210px;
 }
 
+.newProject:hover {
+    background-color: var(--button-hover-color);
+}
+
+/* --- Main content style --- */
+
 #content-container {
     background-color: var(--main-color);
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
+    padding: 5rem 3rem;
 }
+
+#currentProjectTitle:hover, #content-container li:hover {
+    text-decoration: underline;
+}
+
+#content-container ul {
+    margin: 1rem 0;
+}
+
+#uncompleteTodos, #completedTodos {
+    overflow-y: scroll;
+    height: 30vh;
+    width: 25vw;
+    min-width: 180px;
+}
+
+ul span {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1rem 15vw 26px;
+    gap: 1rem;
+    min-width: 200px;
+}
+
+ul p {
+    margin-left: 2rem;
+}
+
+#content-container h2 {
+border-top: var(--basic-border);
+padding-top: 1rem;
+margin-top: 1rem;
+}
+
+/* Scrollbar */
+#uncompleteTodos::-webkit-scrollbar, #completedTodos::-webkit-scrollbar {
+    width: 12px;
+}
+
+#uncompleteTodos::-webkit-scrollbar-track, #completedTodos::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: var(--track-background-color);
+    border: 1px solid var(--track-border-color);
+    box-shadow: inset 0 0 6px #0000004d;
+}
+
+#uncompleteTodos::-webkit-scrollbar-thumb, #completedTodos::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: var(--thumb-color);
+}
+
+/* Buttons */
 
 .newTodo {
-    width: 100px;
-}
-
-#new-project-dialog {
-    justify-self: center;
-    align-self: center;
+    background-color: var(--track-border-color);
     border: none;
     border-radius: 1rem;
-    box-shadow: var(--standard-shadow);
+    font-weight: bold;
+    font-size: 0.9rem;
+    width: 140px;
+    padding: 0.3rem;
 }
 
-#new-project-dialog:open {
-    display: flex;
-    flex-direction: column;
+.newTodo:hover {
+    background-color: var(--button-hover-color);
 }
 
-#new-project-form {
-    display: grid;
-    grid-template-columns: 100px 200px;
-    row-gap: 0.5rem;
-    margin-bottom: 1rem;
-}
+/* --- Main container buttons style --- */
 
-#content-container span, #content-container p {
-    width: 200px;
-    display: flex;
-}
-
-#content-container span {
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-}
-
-#content-container p {
-    justify-content: center;
-}
-
-.toggleButton, .removeButton {
+.toggleButton,
+.removeButton {
     border-radius: 100px;
     padding: 0;
+}
+
+.removeButton {
+    height: var(--remove-button-sidelength);
+    width: var(--remove-button-sidelength);
+}
+
+img.removeButton:hover {
+    border: var(--basic-border);
+}
+
+img.removeButton {
+    border: 1px solid var(--main-color);
 }
 
 .toggleButton {
@@ -162,11 +207,7 @@ dialog::backdrop {
     border-style: solid;
 }
 
-.removeButton {
-    height: var(--remove-button-sidelength);
-    width: var(--remove-button-sidelength);
-}
-
+/* Priority color */
 .prioOne {
     border-color: var(--border-priority-one);
     background-color: var(--background-priority-one);
@@ -180,4 +221,36 @@ dialog::backdrop {
 .prioThree {
     border-color: var(--border-priority-three);
     background-color: var(--background-priority-three);
+}
+
+/* --- Dialog style --- */
+
+dialog::backdrop {
+    backdrop-filter: blur(2px);
+}
+
+dialog {
+    justify-self: center;
+    align-self: center;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: var(--standard-shadow);
+}
+
+form {
+    display: grid;
+    grid-template-columns: 100px 200px;
+    row-gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+dialog div {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#viewProjectDialogButtons img {
+    width: 1rem;
+    align-self: center;
+    margin-left: auto;
 }
