@@ -1,4 +1,5 @@
 import crossImage from "../images/cross-solid.svg";
+import { format } from "date-fns";
 import { storage } from "./storage";
 
 export const mainContent = (function () {
@@ -24,7 +25,7 @@ export const mainContent = (function () {
             if (todo.getCompletionStatus === false) {
                 const todoContainer = createTodoContainer(todo);
                 const todoDueDate = document.createElement("p");
-                todoDueDate.textContent = todo.getDueDate;
+                if (todo.getDueDate !== "") { todoDueDate.textContent = format(todo.getDueDate, "dd MMMM")};
                 list.appendChild(todoContainer);
                 list.appendChild(todoDueDate);
             }
@@ -39,7 +40,7 @@ export const mainContent = (function () {
             if (todo.getCompletionStatus === true) {
                 const todoContainer = createTodoContainer(todo);
                 const todoDueDate = document.createElement("p");
-                todoDueDate.textContent = todo.getDueDate;
+                if (todo.getDueDate !== "") { todoDueDate.textContent = format(todo.getDueDate, "dd MMMM")};
                 list.appendChild(todoContainer);
                 list.appendChild(todoDueDate);
             }
